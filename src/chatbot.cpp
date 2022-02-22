@@ -77,10 +77,19 @@ ChatBot::ChatBot( ChatBot&& other ) {
 
     // assign shared pointer to _image
     _image = other._image;
+    other._image = nullptr;
 }
 
 ChatBot& ChatBot::operator=( ChatBot&& other) {
     std::cout << "ChatBot Move Assignment" << std::endl;
+
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+
+    // assign shared pointer to _image
+    _image = other._image;
+    other._image = nullptr;
+
     return *this;
 }
 
