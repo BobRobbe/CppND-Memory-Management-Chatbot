@@ -60,6 +60,10 @@ ChatBot::ChatBot( ChatBot& other) {
 ChatBot& ChatBot::operator=(const ChatBot& other) {
     std::cout << "ChatBot Copy Assigment" << std::endl;
 
+    if(this == &other) {
+        return *this;
+    }
+
     _chatLogic = other._chatLogic;
     _rootNode = other._rootNode;
 
