@@ -27,7 +27,8 @@ ChatBot::ChatBot(std::string filename)
     _rootNode = nullptr;
 
     // load image into heap memory
-    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+    //_image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+    _image = std::make_shared<wxBitmap>(filename, wxBITMAP_TYPE_PNG); 
 }
 
 ChatBot::~ChatBot()
@@ -37,13 +38,51 @@ ChatBot::~ChatBot()
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
-        delete _image;
-        _image = NULL;
+        //delete _image;
+        //_image = NULL;
     }
 }
 
 //// STUDENT CODE
 ////
+
+ChatBot::ChatBot( ChatBot& other) {
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+
+    // assign shared pointer to _image
+    _image = other._image;
+    //other._image = nullptr;
+}
+
+
+ChatBot& ChatBot::operator=(const ChatBot& other) {
+    std::cout << "ChatBot Copy Assigment" << std::endl;
+
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+
+    // assign shared pointer to _image
+    _image = other._image;
+
+    return *this;
+}
+
+ChatBot::ChatBot( ChatBot&& other ) {
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+
+    // assign shared pointer to _image
+    _image = other._image;
+}
+
+ChatBot& ChatBot::operator=( ChatBot&& other) {
+    std::cout << "ChatBot Move Assignment" << std::endl;
+    return *this;
+}
 
 ////
 //// EOF STUDENT CODE

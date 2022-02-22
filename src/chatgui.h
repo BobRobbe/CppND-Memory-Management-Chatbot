@@ -18,6 +18,7 @@ private:
     //// STUDENT CODE
     ////
 
+    // make _chatLogic a unique_ptr owned by chatgui
     std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
@@ -29,6 +30,7 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
+    // return raw pointer of _chatLogic
     ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events
