@@ -19,6 +19,7 @@ private:
 
     // data handles (owned)
     std::vector<std::unique_ptr<GraphNode>> _nodes;
+    // _edges no longer needed as edge instances are directly attached to the nodes
     //std::vector<std::unique_ptr<GraphEdge>> _edges;
 
     ////

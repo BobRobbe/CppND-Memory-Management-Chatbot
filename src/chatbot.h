@@ -14,6 +14,7 @@ class ChatBot
 private:
     // data handles (owned)
     //wxBitmap *_image; // avatar image
+    // using a shared_ptr for the _imgage so it can be copied and tracked
     std::shared_ptr<wxBitmap> _image;
 
     // data handles (not owned)

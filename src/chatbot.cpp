@@ -34,6 +34,10 @@ ChatBot::ChatBot(std::string filename)
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
+
+    // descrutor is called multiple times at end of application, is OK according to:
+    // https://knowledge.udacity.com/questions/794725
+
     // image is shared_ptr so no need to deallocate here
     // deallocate heap memory
     /*if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr

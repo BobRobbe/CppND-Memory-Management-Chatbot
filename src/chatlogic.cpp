@@ -32,21 +32,9 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
-    // delete chatbot instance
-    //delete _chatBot;
+    // _chatBot is longer owned by ChatLogic, no delete
 
     // no need to delete the nodes or edges, as they are unique_ptr now.
-    // delete all nodes
-    /*for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
-    {
-        delete *it;
-    }*/
-
-    // delete all edges
-    /*for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-        delete *it;
-    }*/
 
     ////
     //// EOF STUDENT CODE
@@ -162,6 +150,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
                             // create new edge
                             std::unique_ptr<GraphEdge> edge = std::make_unique<GraphEdge>(id);
+                            // https://knowledge.udacity.com/questions/560645
                             edge->SetChildNode((*childNode).get());
                             edge->SetParentNode((*parentNode).get());
                             //_edges.push_back(edge);
