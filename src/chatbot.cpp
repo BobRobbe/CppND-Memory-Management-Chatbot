@@ -28,7 +28,7 @@ ChatBot::ChatBot(std::string filename)
 
     // load image into heap memory
     // make image a shared_ptr so all copies of ChatBot share the image
-    _image = std::make_shared<wxBitmap>(filename, wxBITMAP_TYPE_PNG); 
+    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG); 
 }
 
 ChatBot::~ChatBot()
@@ -38,13 +38,12 @@ ChatBot::~ChatBot()
     // descrutor is called multiple times at end of application, is OK according to:
     // https://knowledge.udacity.com/questions/794725
 
-    // image is shared_ptr so no need to deallocate here
     // deallocate heap memory
-    /*if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
         _image = NULL;
-    }*/
+    }
 }
 
 //// STUDENT CODE
@@ -59,7 +58,8 @@ ChatBot::ChatBot( ChatBot& other) {
     // update ChatLogic to hold the copied ChatBot
     _chatLogic->SetChatbotHandle(this);
 
-    // assign shared pointer to _image
+    // copy _image
+    _image = new wxBitmap();
     _image = other._image;
 }
 
@@ -78,7 +78,8 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
     // update ChatLogic to hold the copied ChatBot
     _chatLogic->SetChatbotHandle(this);
 
-    // assign shared pointer to _image
+    // copy _image
+    _image = new wxBitmap();
     _image = other._image;
 
     return *this;
@@ -94,9 +95,9 @@ ChatBot::ChatBot( ChatBot&& other ) {
     // update ChatLogic to hold the moved ChatBot
     _chatLogic->SetChatbotHandle(this);
 
-    // assign shared pointer to _image
+    // move _image
     _image = other._image;
-    other._image = nullptr;
+    other._image = NULL;
 }
 
 ChatBot& ChatBot::operator=( ChatBot&& other) {
@@ -109,9 +110,9 @@ ChatBot& ChatBot::operator=( ChatBot&& other) {
     // update ChatLogic to hold the moved ChatBot
     _chatLogic->SetChatbotHandle(this);
 
-    // assign shared pointer to _image
+    // move _image
     _image = other._image;
-    other._image = nullptr;
+    other._image = NULL;
 
     return *this;
 }
