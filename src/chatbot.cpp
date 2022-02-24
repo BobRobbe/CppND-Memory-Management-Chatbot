@@ -49,7 +49,7 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
-ChatBot::ChatBot( ChatBot& other) {
+/* ChatBot::ChatBot( ChatBot& other) {
     std::cout << "ChatBot Copy Constructor" << std::endl;
     _chatLogic = other._chatLogic;
     _rootNode = other._rootNode;
@@ -83,7 +83,7 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
     _image = other._image;
 
     return *this;
-}
+} */
 
 ChatBot::ChatBot( ChatBot&& other ) {
     std::cout << "ChatBot Move Constructor" << std::endl;
