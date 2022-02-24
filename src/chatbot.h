@@ -35,8 +35,8 @@ public:
     ////
     // delete copy constructor and copy assigment such that copying is not
     // supported by this class
-    ChatBot( ChatBot& other ) = delete;              // copy constructor
-    ChatBot& operator=(const ChatBot& other) = delete;  // copy assignment
+    ChatBot( ChatBot& other );              // copy constructor
+    ChatBot& operator=(const ChatBot& other);  // copy assignment
     ChatBot( ChatBot&& other );             // move constructor
     ChatBot& operator=( ChatBot&& other);   // move assignment
 
