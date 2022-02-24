@@ -60,7 +60,7 @@ ChatBot::ChatBot( ChatBot& other) {
 
     // copy _image
     _image = new wxBitmap();
-    _image = other._image;
+    *_image = *other._image;
 }
 
 
@@ -80,7 +80,7 @@ ChatBot& ChatBot::operator=(const ChatBot& other) {
 
     // copy _image
     _image = new wxBitmap();
-    _image = other._image;
+    *_image = *other._image;
 
     return *this;
 }
